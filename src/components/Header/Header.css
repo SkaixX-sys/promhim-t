@@ -1,0 +1,106 @@
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.9);
+    transition: ease-in .3s;
+    margin-top: 0px;
+}
+
+.header {
+    margin-top: 20px;
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    z-index: 50;
+    transition: ease-in .3s;
+}
+
+.burger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: end;
+    width: auto;
+}
+
+.burger:after {
+    content: '';
+    top: 74px;
+    position: absolute;
+    width: 132px;
+    background-color: #AB4D74;
+    height: 2px;
+}
+
+.burger-btn {
+    width: 33px;
+    height: 20px;
+    position: relative;
+    margin-right: 20px;
+    margin-left: 10px;
+}
+
+.burger-btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 35%;
+    width: 21px;
+    background-color: #AB4D74;
+    height: 2px;
+    transition: all .5s;
+}
+
+.burger-btn.active:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33px;
+    background-color: #AB4D74;
+    height: 2px;
+    transition: all .5s;
+}
+
+.burger-btn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 33px;
+    background-color: #AB4D74;
+    height: 2px;
+}
+
+.burger-btn span {
+    position: absolute;
+    top: 9px;
+    width: 33px;
+    background-color: #AB4D74;
+    height: 2px;
+}
+
+.logo {
+    font-size: 32.77px;
+    font-style: normal;
+
+}
+
+.logo i {
+    font-style: normal;
+    color: #AB4D74;
+
+}
+
+@media screen and (min-width: 1920px) {
+    .header {
+        padding: 0 10%;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 728px) {
+    .header {
+        padding: 0 8px;
+    }
+}

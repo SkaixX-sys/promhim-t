@@ -1,0 +1,54 @@
+.App {
+    width: 100vw;
+    height: 6000px;
+    position: relative;
+    background: rgba(11, 4, 1, 1);
+    z-index: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.App>ul {
+    margin-top: 140px;
+    padding-left: 60px;
+    text-align: left;
+}
+
+.call-btn:hover,
+.take-call:hover {
+    transform: scale(101%);
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+    transition: .2s;
+}
+.take-call,
+.call-btn {
+    transition: .2s;
+}
+
+
+@media screen and (min-width: 1920px) {
+    .App>ul {
+        padding-left: 10%;
+    }
+    .App {
+        height: 6150px;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1920px) {
+    .App {
+        height: 6300px;
+    }
+}
+
+@media screen and (min-width: 728px) and (max-width: 1280px) {
+    .App {
+        height: 7250px;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 728px) {
+    .App {
+        height: 8300px;
+    }
+}
