@@ -1,0 +1,47 @@
+.modalCertificates {
+    position: fixed;
+    z-index: 350;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(3px);
+    opacity: 0;
+    transition: .3s;
+    pointer-events: none;
+  }
+
+  .modalCertificates.active {
+    opacity: 1;
+    transform: scale(100%);
+    transition: .3s;
+    pointer-events: all;
+  }
+  
+  .modalCertificates-content {
+    opacity: 0;
+    margin: auto;
+    width: 90%;
+    padding: 60px;
+    transition: .3s;
+    max-width: 800px;
+    height: 90%;
+    transform: scale(30%);
+  }
+
+  .modalCertificates-content.active {
+    opacity: 1;
+    transition: .3s;
+    transform: scale(100%);
+  }
+  
+  .close {
+    color: #fff;
+    font-size: 2rem;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }

@@ -33,13 +33,6 @@ function App() {
     { id: 3, name: 'Нефрас-БР-С2', description: 'Результ смешивания высококачественных дизельных компонентов с очистителями и модификаторами. Является эффективной присадкой для моторного топлива, которая позволяет улучшить качество топлива и повысить экономичность и экологичность двигателя.', price: '50' },
     { id: 4, name: 'Нефрас-С-5', description: 'Применяется в гидравлических системах технических устройств, включая металлообрабатывающее оборудование, пресс-формы, машинно-строительное оборудование, гидравлические манипуляторы.', price: '70' },
   ]
-  const certificates = [
-    { id: 1, name: 'Олифа', img: '../static/87b19a67-5a92-409d-b1b0-c48b6ea4c0ef.jpg' },
-    { id: 1, name: 'Уайт-спирит Нефрас С4', img: '../static/87b19a67-5a92-409d-b1b0-c48b6ea4c0ef.jpg' },
-    { id: 1, name: 'Нефрас C5', img: '../static/87b19a67-5a92-409d-b1b0-c48b6ea4c0ef.jpg' },
-    { id: 1, name: 'Регистрация', img: '../static/87b19a67-5a92-409d-b1b0-c48b6ea4c0ef.jpg' },
-    { id: 1, name: 'Нефрас-БР-С2', img: '../static/87b19a67-5a92-409d-b1b0-c48b6ea4c0ef.jpg' },
-  ]
 
   return (
     <div className="App">
@@ -48,7 +41,7 @@ function App() {
       <Products polygon={polygon} items={products} elipse={elipse} polygon2={polygon2} active={modalActive} setActive={setModalActive} />
       <ul><a name="О нас"></a><li>{polygon}О нас</li></ul>
       <About polygon={polygon} />
-      <Certificates certificates={certificates} elipse={elipse} />
+      <Certificates elipse={elipse} />
       <Modal active={modalActive} setActive={setModalActive} />
       <Footer />
     </div>

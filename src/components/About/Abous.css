@@ -195,6 +195,7 @@
 
     .about__item1 {
         width: 100%;
+        padding-left: 16px;
     }
 
     .about__item11 {
@@ -203,6 +204,8 @@
 
     .about__item2 {
         width: 100%;
+        margin-top: 16px;
+        padding-left: 16px;
     }
 
     .about__item22 {
@@ -210,15 +213,15 @@
     }
 
     .about__item1:before {
-        left: 30%;
-        height: 200px;
-        width: 200px;
+        left: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .about__item2::after {
-        left: 30%;
-        height: 200px;
-        width: 200px;
+        left: 0;
+        height: 100%;
+        width: 100%;
     }
 
     .about__item1,

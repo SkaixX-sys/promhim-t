@@ -23,8 +23,15 @@ a {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.7);
 }
+
 @media screen and (min-width: 1920px) {
     .menu {
         margin: 0 8%;
+    }
+}
+
+@media screen and (min-width: 328px) and (max-width: 728px) {
+    .menu {
+        right: 20px;
     }
 }

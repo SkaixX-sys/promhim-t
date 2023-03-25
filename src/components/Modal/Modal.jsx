@@ -95,6 +95,7 @@ function Modal({ active, setActive }) {
             {form ?
                 <div className={active ? 'modal__content active' : 'modal__content'} onClick={(e => e.stopPropagation())}>
                     {succes ? <div className='succes'>{succes}</div> : null}
+                    <div className='closeModal' onClick={() => {setActive(false)}}>&times;</div>
                     <div className='ccc'>ЗАКАЗАТЬ ЗВОНОК</div>
                     <form
                         // action='https://docs.google.com/forms/d/e/1FAIpQLScrBLtbM9yKksBCU1unfyYCmLoCbzA3O5L_ws1o7jnVIXiD0g/formResponse'
@@ -106,7 +107,7 @@ function Modal({ active, setActive }) {
                             type="text"
                             name='entry.599392440'
                             placeholder='Ваше имя'
-                            value={formData['entry.599392440'] || ''}
+                            value={formData['entry. 599392440'] || ''}
                             onChange={handleChange}
                             />
                             {errors['entry.1131487572'] && <div className='error'>{errors['entry.1131487572']}</div>}

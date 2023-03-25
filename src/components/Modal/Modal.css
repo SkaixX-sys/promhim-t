@@ -38,6 +38,7 @@
     justify-content: space-between;
     flex-direction: column;
     border: 1px solid #AB4D74;
+    position: relative;
 }
 
 .modal__content.active {
@@ -154,7 +155,14 @@ textarea {
     height: 50px;
     text-align: center;
 }
-
+.closeModal {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+}
 
 
 @media screen and (min-width: 768px) and (max-width: 1280px) {
