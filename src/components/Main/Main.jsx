@@ -4,7 +4,7 @@ import './Main.css'
 function Main({ polygon, polygon2, active, setActive }) {
 
 
-  const backgroundImage = '../../../static/tinyImg/backgroundImage.png';
+  const backgroundImage = 'static/tinyImg/backgroundImage.png';
 
   const truck = <svg width="107" height="80" viewBox="0 0 107 80" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g clipPath="url(#clip0_439_1086)">

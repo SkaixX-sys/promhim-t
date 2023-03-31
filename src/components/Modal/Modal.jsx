@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import { useState } from 'react'
 import './Modal.css'
 import axios from 'axios'
@@ -8,31 +9,43 @@ function Modal({ active, setActive }) {
     const [errors, setErrors] = useState({});
     const [succes, setSucces] = useState();
 
+    const CALL_FORM_API = import.meta.env.VITE_REACT_CALLBACK_FORM_API_URL
+    const CALL_NAME_API = import.meta.env.VITE_REACT_CALLBACK_NAME_API_URL
+    const CALL_PHONE_API = import.meta.env.VITE_REACT_CALLBACK_PHONE_API_URL
+
+    const FEED_FORM_API = import.meta.env.VITE_REACT_FEEDBACK_FORM_API_URL
+    const FEED_NAME_API = import.meta.env.VITE_REACT_FEEDBACK_NAME_API_URL
+    const FEED_EMAIL_API = import.meta.env.VITE_REACT_FEEDBACK_EMAIL_API_URL
+    const FEED_MESSAGE_API = import.meta.env.VITE_REACT_FEEDBACK_MESSAGE_API_URL
+
+
+
+
     const validateForm = () => {
         const errors = {};
-        if (!formData['entry.599392440']) {
-            errors['entry.599392440'] = 'Введите имя';
+        if (!formData[CALL_NAME_API]) {
+            errors[CALL_NAME_API] = 'Введите имя';
         }
-        if (!formData['entry.1131487572']) {
-            errors['entry.1131487572'] = 'Введите номер телефона';
-        } else if (!/^\+?\d+$/.test(formData['entry.1131487572'])) {
-            errors['entry.1131487572'] = 'Неверный формат номера телефона';
+        if (!formData[CALL_PHONE_API]) {
+            errors[CALL_PHONE_API] = 'Введите номер телефона';
+        } else if (!/^\+?\d+$/.test(formData[CALL_PHONE_API])) {
+            errors[CALL_PHONE_API] = 'Неверный формат номера телефона';
         }
         return errors;
     };
 
     const validateForm2 = () => {
         const errors = {};
-        if (!formData['entry.178226530']) {
-            errors['entry.178226530'] = 'Введите имя';
+        if (!formData[FEED_NAME_API]) {
+            errors[FEED_NAME_API] = 'Введите имя';
         }
-        if (!formData['entry.427354668']) {
-            errors['entry.427354668'] = 'Введите почту';
-        } else if (!/\S+@\S+\.\S+/.test(formData['entry.427354668'])) {
-            errors['entry.427354668'] = 'Неверный формат адреса электронной почты';
+        if (!formData[FEED_EMAIL_API]) {
+            errors[FEED_EMAIL_API] = 'Введите почту';
+        } else if (!/\S+@\S+\.\S+/.test(formData[FEED_EMAIL_API])) {
+            errors[FEED_EMAIL_API] = 'Неверный формат адреса электронной почты';
         }
-        if (!formData['entry.1638684184']) {
-            errors['entry.1638684184'] = 'Введите сообщение';
+        if (!formData[FEED_MESSAGE_API]) {
+            errors[FEED_MESSAGE_API] = 'Введите сообщение';
         }
         return errors;
     }
@@ -45,7 +58,7 @@ function Modal({ active, setActive }) {
             setErrors(errors);
             return;
         }
-        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLScrBLtbM9yKksBCU1unfyYCmLoCbzA3O5L_ws1o7jnVIXiD0g/formResponse";
+        const formUrl = CALL_FORM_API;
         const formDataUrlEncoded = new URLSearchParams(formData).toString();
 
         setSucces('Данные переданы')
@@ -66,7 +79,7 @@ function Modal({ active, setActive }) {
             return;
         }
 
-        const formUrl = "https://docs.google.com/forms/d/e/1FAIpQLSelfiy_cnKKQF2E3OvlE9mhjlF-U1Ml0_IIzbu0JRqo2VlOzA/formResponse";
+        const formUrl = FEED_FORM_API;
         const formDataUrlEncoded = new URLSearchParams(formData).toString();
         setSucces('Данные переданы')
         setFormData({});
@@ -98,26 +111,25 @@ function Modal({ active, setActive }) {
                     <div className='closeModal' onClick={() => {setActive(false)}}>&times;</div>
                     <div className='ccc'>ЗАКАЗАТЬ ЗВОНОК</div>
                     <form
-                        // action='https://docs.google.com/forms/d/e/1FAIpQLScrBLtbM9yKksBCU1unfyYCmLoCbzA3O5L_ws1o7jnVIXiD0g/formResponse'
                         className='form'
                         onSubmit={callSubmit}
                         >
-                        {errors['entry.599392440'] && <div className='error'>{errors['entry.599392440']}</div>}
+                            {errors[CALL_NAME_API] && <div className='error'>{errors[CALL_NAME_API]}</div>}
                         <input
                             type="text"
-                            name='entry.599392440'
+                            name={CALL_NAME_API}
                             placeholder='Ваше имя'
-                            value={formData['entry. 599392440'] || ''}
+                            value={formData[CALL_NAME_API] || ''}
                             onChange={handleChange}
                             />
-                            {errors['entry.1131487572'] && <div className='error'>{errors['entry.1131487572']}</div>}
+                            {errors[CALL_PHONE_API] && <div className='error'>{errors[CALL_PHONE_API]}</div>}
                         <input
                             type="phone"
-                            name='entry.1131487572'
+                            name={CALL_PHONE_API}
                             placeholder='Ваш номер'
-                            value={formData['entry.1131487572'] || ''}
+                            value={formData[CALL_PHONE_API] || ''}
                             onChange={handleChange}
-                        />
+                            />
                         <div className="take-consultation__callback">
                             <div className="take-consultation" onClick={() => { setForm(false); setErrors({}); setFormData({}); }}>Связь по почте</div>
                             <input
@@ -133,33 +145,32 @@ function Modal({ active, setActive }) {
                     {succes ? <div className='succes'>{succes}</div> : null}
                     <div className='ccc'>НАПИСАТЬ СООБЩЕНИЕ</div>
                     <form
-                        // action='https://docs.google.com/forms/d/e/1FAIpQLSelfiy_cnKKQF2E3OvlE9mhjlF-U1Ml0_IIzbu0JRqo2VlOzA/formResponse'
                         className="form"
                         onSubmit={feedSubmit}
                     >
 
-                        {errors['entry.178226530'] && <div className='error'>{errors['entry.178226530']}</div>}
+                        {errors[FEED_NAME_API] && <div className='error'>{errors[FEED_NAME_API]}</div>}
                         <input
                             type="text"
-                            name='entry.178226530'
+                            name={FEED_NAME_API}
                             placeholder='Ваше имя'
-                            value={formData['entry.178226530'] || ''}
+                            value={formData[FEED_NAME_API] || ''}
                             onChange={handleChange}
                             />
-                            {errors['entry.427354668'] && <div className='error'>{errors['entry.427354668']}</div>}
+                            {errors[FEED_EMAIL_API] && <div className='error'>{errors[FEED_EMAIL_API]}</div>}
                         <input
                             type="email"
-                            name='entry.427354668'
+                            name={FEED_EMAIL_API}
                             placeholder='Ваша почта'
-                            value={formData['entry.427354668'] || ''}
+                            value={formData[FEED_EMAIL_API] || ''}
                             onChange={handleChange}
                             />
-                            {errors['entry.1638684184'] && <div className='error'>{errors['entry.1638684184']}</div>}
+                            {errors[FEED_MESSAGE_API] && <div className='error'>{errors[FEED_MESSAGE_API]}</div>}
                         <textarea
                             type="text"
-                            name='entry.1638684184'
+                            name={FEED_MESSAGE_API}
                             placeholder='Сообщение'
-                            value={formData['entry.1638684184'] || ''}
+                            value={formData[FEED_MESSAGE_API] || ''}
                             onChange={handleChange}
                         />
                         <div className="take-consultation__callback">
